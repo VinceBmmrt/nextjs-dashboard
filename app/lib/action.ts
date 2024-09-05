@@ -121,7 +121,12 @@ export async function authenticate(
   }
 }
 
-export async function googleAuthenticate(formData) {
-  const action = formData.get("action");
-  await signIn(action, { redirectTo: "/home" });
+export async function googleAuthenticate(formData: FormData): Promise<void> {
+  const action = formData.get("action") as string | null;
+
+  if (action === "google") {
+    await signIn(action, { callbackUrl: "/home" });
+  } else {
+    throw new Error("Unsupported action type");
+  }
 }
