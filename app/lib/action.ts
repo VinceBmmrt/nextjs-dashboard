@@ -120,3 +120,8 @@ export async function authenticate(
     throw error;
   }
 }
+
+export async function googleAuthenticate(formData) {
+  const action = formData.get("action");
+  await signIn(action, { redirectTo: "/home" });
+}
