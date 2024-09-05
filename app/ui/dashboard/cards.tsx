@@ -12,12 +12,7 @@ const iconMap = {
   pending: ClockIcon,
   invoices: InboxIcon,
 };
-type CardWrapperProps = {
-  totalPaidInvoices: number;
-  numberOfInvoices: number;
-  totalPendingInvoices: number;
-  numberOfCustomers: number;
-};
+
 export default async function CardWrapper() {
   const {
     numberOfInvoices,
