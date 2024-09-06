@@ -3,6 +3,7 @@ import { sql } from "@vercel/postgres";
 import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { z } from "zod";
 import { authConfig } from "./auth.config";
@@ -55,6 +56,17 @@ export const {
         },
       },
     }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
+    }),
   ],
   secret: process.env.AUTH_SECRET,
   pages: {
@@ -64,7 +76,8 @@ export const {
     async signIn({ account }) {
       if (
         account?.provider === "google" ||
-        account?.provider === "credentials"
+        account?.provider === "credentials" ||
+        account?.provider === "github"
       ) {
         return true;
       }

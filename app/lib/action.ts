@@ -130,3 +130,13 @@ export async function googleAuthenticate(formData: FormData): Promise<void> {
     throw new Error("Unsupported action type");
   }
 }
+
+export async function githubAuthenticate(formData: FormData): Promise<void> {
+  const action = formData.get("action") as string | null;
+
+  if (action === "github") {
+    await signIn(action, { callbackUrl: "/" });
+  } else {
+    throw new Error("Unsupported action type");
+  }
+}
