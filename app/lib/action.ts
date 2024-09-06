@@ -125,7 +125,7 @@ export async function googleAuthenticate(formData: FormData): Promise<void> {
   const action = formData.get("action") as string | null;
 
   if (action === "google") {
-    await signIn(action, { callbackUrl: "/home" });
+    await signIn(action, { callbackUrl: "/" });
   } else {
     throw new Error("Unsupported action type");
   }

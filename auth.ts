@@ -56,4 +56,19 @@ export const {
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/auth/signin",
+  },
+  callbacks: {
+    async signIn({ account }) {
+      if (
+        account?.provider === "google" ||
+        account?.provider === "credentials"
+      ) {
+        return true;
+      }
+      return false;
+    },
+  },
 });
