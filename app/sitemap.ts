@@ -1,41 +1,42 @@
-import { NextApiResponse } from "next";
+import type { MetadataRoute } from "next";
 
-const Sitemap = () => {};
-
-export const getServerSideProps = async ({ res }: { res: NextApiResponse }) => {
-  const baseUrl = "https://nextjs-dashboard-vincebmmrts-projects.vercel.app";
-
-  const staticPages = [
-    "",
-    "about",
-    "contact",
-    "dashboard",
-    "dashboard/customers",
-    "dashboard/invoices",
-    // Add more static routes here
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: "https://nextjs-dashboard-vincebmmrts-projects.vercel.app",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+      images: [
+        "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*dCkBR3Q3lkGMKeAh.png",
+      ],
+    },
+    {
+      url: "https://nextjs-dashboard-vincebmmrts-projects.vercel.app/dashboard",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+      images: [
+        "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*dCkBR3Q3lkGMKeAh.png",
+      ],
+    },
+    {
+      url: "https://nextjs-dashboard-vincebmmrts-projects.vercel.app/dashboard/invoices",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+      images: [
+        "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*dCkBR3Q3lkGMKeAh.png",
+      ],
+    },
+    {
+      url: "https://nextjs-dashboard-vincebmmrts-projects.vercel.app/dashboard/customers",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+      images: [
+        "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*dCkBR3Q3lkGMKeAh.png",
+      ],
+    },
   ];
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${staticPages
-      .map((page) => {
-        return `
-          <url>
-            <loc>${baseUrl}/${page}</loc>
-            <lastmod>${new Date().toISOString()}</lastmod>
-          </url>
-        `;
-      })
-      .join("")}
-  </urlset>`;
-
-  res.setHeader("Content-Type", "text/xml");
-  res.write(sitemap);
-  res.end();
-
-  return {
-    props: {},
-  };
-};
-
-export default Sitemap;
+}

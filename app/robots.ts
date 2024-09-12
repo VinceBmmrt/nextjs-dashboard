@@ -5,12 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: [
-        "/private/",
-        "/dashboard/customers/",
-        "/dashboard/invoices/create",
-        "/dashboard/invoices/[id]/edit",
-      ],
+      disallow: "/private/",
     },
     sitemap:
       "https://nextjs-dashboard-vincebmmrts-projects.vercel.app/sitemap.xml",
