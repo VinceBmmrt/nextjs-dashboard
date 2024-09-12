@@ -10,19 +10,25 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
 const links = [
-  { name: "Home", href: "/dashboard", icon: HomeIcon },
+  { name: "Home", href: "/dashboard", icon: HomeIcon, ariaLabel: "Go to Home" },
   {
     name: "Invoices",
     href: "/dashboard/invoices",
     icon: DocumentDuplicateIcon,
+    ariaLabel: "View Invoices",
   },
-  { name: "Customers", href: "/dashboard/customers", icon: UserGroupIcon },
+  {
+    name: "Customers",
+    href: "/dashboard/customers",
+    icon: UserGroupIcon,
+    ariaLabel: "View Customers",
+  },
 ];
 
 export default function NavLinks() {
   const pathname = usePathname();
+
   return (
     <>
       {links.map((link) => {
@@ -37,8 +43,9 @@ export default function NavLinks() {
                 "bg-sky-100 text-blue-600": pathname === link.href,
               }
             )}
+            aria-label={link.ariaLabel}
           >
-            <LinkIcon className="w-6" />
+            <LinkIcon className="w-6" aria-hidden="true" />
             <p className="hidden md:block">{link.name}</p>
           </Link>
         );

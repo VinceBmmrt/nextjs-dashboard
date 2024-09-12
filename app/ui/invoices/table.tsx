@@ -21,7 +21,7 @@ export default async function InvoicesTable({
             {invoices?.map((invoice) => (
               <div
                 key={invoice.id}
-                className="mb-2 w-full rounded-md bg-white p-4"
+                className="mb-2 w-full rounded-md bg-gray-100 p-4"
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
@@ -77,7 +77,7 @@ export default async function InvoicesTable({
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white">
+            <tbody className="bg-gray-100">
               {invoices?.map((invoice) => (
                 <tr
                   key={invoice.id}
@@ -143,7 +143,7 @@ export async function CustomersTable({
             {customers?.map((customer) => (
               <div
                 key={customer.id}
-                className="mb-2 w-full rounded-md bg-white p-4"
+                className="mb-2 w-full rounded-md bg-gray-100 p-4"
               >
                 <div className="flex items-center justify-between border-b pb-4">
                   <div>
@@ -190,7 +190,7 @@ export async function CustomersTable({
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white">
+            <tbody className="bg-gray-100">
               {customers?.map((customer) => (
                 <tr
                   key={customer.id}

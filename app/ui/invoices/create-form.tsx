@@ -90,7 +90,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           <legend className="mb-2 block text-sm font-medium">
             Set the invoice status
           </legend>
-          <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
+          <div className="rounded-md border border-gray-200 bg-gray-100 px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
                 <input
