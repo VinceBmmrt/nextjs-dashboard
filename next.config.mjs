@@ -26,6 +26,18 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/app/sitemap.ts",
+      },
+      {
+        source: "/robots.txt",
+        destination: "/app/robots.ts",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [
         "/private/",
-        "/dashboard/customers/create",
+        "/dashboard/customers/",
         "/dashboard/invoices/create",
         "/dashboard/invoices/[id]/edit",
       ],
