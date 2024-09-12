@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /api/           # Empêche l'exploration des routes API
-Disallow: /private/       # Empêche l'exploration d'un répertoire privé, s'il existe
-
-Allow: /                 # Autorise l'exploration du reste du site
-Sitemap: https://nextjs-dashboard-vincebmmrts-projects.vercel.app/sitemap.xml  # Indique l'emplacement du sitemap
