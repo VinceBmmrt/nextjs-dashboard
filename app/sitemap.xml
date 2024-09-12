@@ -1,20 +1,49 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://acme.com</loc>
-    <lastmod>2023-04-06T15:02:24.021Z</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1</priority>
-  </url>
-  <url>
-    <loc>https://acme.com/about</loc>
-    <lastmod>2023-04-06T15:02:24.021Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://acme.com/blog</loc>
-    <lastmod>2023-04-06T15:02:24.021Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-</urlset>
+// app/sitemap.ts
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  const baseUrl = 'https://nextjs-dashboard-vincebmmrts-projects.vercel.app';
+
+  // Define your static and dynamic routes
+  const staticPages = [
+    '/',
+    '/home',
+    '/dashboard',
+    '/dashboard/customers',
+    '/dashboard/invoices',
+  ];
+
+  // Example of dynamic routes
+  const dynamicPages = [
+    '/dashboard/customers?page=1',
+    '/dashboard/invoices?page=1',
+    '/dashboard/invoices/create',
+    // Add more dynamic pages here
+  ];
+
+  // Combine static and dynamic routes
+  const allPages = [...staticPages, ...dynamicPages];
+
+  // Generate XML content
+  const xml = `
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${allPages
+        .map((page) => {
+          return `
+            <url>
+              <loc>${baseUrl}${page}</loc>
+              <lastmod>${new Date().toISOString()}</lastmod>
+            </url>
+          `;
+        })
+        .join('')}
+    </urlset>
+  `;
+
+  return NextResponse.json(xml, {
+    headers: {
+      'Content-Type': 'application/xml',
+    },
+  });
+}

@@ -5,8 +5,14 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/private/",
+      disallow: [
+        "/private/",
+        "/dashboard/customers/create",
+        "/dashboard/invoices/create",
+        "/dashboard/invoices/[id]/edit",
+      ],
     },
-    sitemap: "https://acme.com/sitemap.xml",
+    sitemap:
+      "https://nextjs-dashboard-vincebmmrts-projects.vercel.app/sitemap.xml",
   };
 }
