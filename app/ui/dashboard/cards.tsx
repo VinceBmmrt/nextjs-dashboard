@@ -45,7 +45,7 @@ export function Card({ title, value, type }: CardProps) {
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
       <div className="flex p-4">
         {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
-        <h3 className="ml-2 text-sm font-medium">{title}</h3>
+        <h1 className="ml-2 text-sm font-medium">{title}</h1>
       </div>
       <p
         className={`${lusitana.className}
